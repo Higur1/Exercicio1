@@ -95,7 +95,7 @@ public class RedesController {
 					if (linha.contains("dia")) {
 						String[] Fim = linha.split(",");
 						String[] Media = Fim[2].split("=");
-						System.out.print(comando + ": Media " + Media[1]);
+						System.out.print(comando + ": Media = " + Media[1]);
 						linha = buffer.readLine();
 					}
 					else {
