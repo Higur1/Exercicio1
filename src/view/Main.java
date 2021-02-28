@@ -10,7 +10,7 @@ public class Main {
 		
 		Object [] opc = {"IP","Ping"};
 		while (escolha == 5) {
-			escolha = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Opções",0, JOptionPane.DEFAULT_OPTION,null, opc, opc[0]);
+			escolha = JOptionPane.showOptionDialog(null, "Escolha uma opcao", "Opcoes",0, JOptionPane.DEFAULT_OPTION,null, opc, opc[0]);
 			if (escolha == 0) {
 				RedCon.ip(so);
 			}

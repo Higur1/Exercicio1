@@ -55,22 +55,23 @@ public class RedesController {
 				BufferedReader buffer = new BufferedReader(leitor);
 				String linha = buffer.readLine();
 				while(linha != null) {
-					if (linha.contains("Adaptador")) {
-						String Adaptador = linha;
+					if (linha.contains("flags")) {
+						String []Adaptador = linha.split(":");
+						linha = buffer.readLine();
 						try{
-							while (!linha.contains("Adaptador")){
-								if (linha.contains("IPv4")) {
-									String[] IPv4 = linha.split(":");
-									System.out.println(Adaptador + " : " +IPv4[1]);
-								}
+							while (!linha.contains("flags")){
+								if (linha.contains("inet") && (!linha.contains("inet6"))) {
+									String[] IPv4 = linha.split("netmask");
+									String[] inet = IPv4[0].split("inet");
+									System.out.println(Adaptador[0] + " : " + inet[1]);
+								}	
 								linha = buffer.readLine();
 							}
 						}
 						catch(java.lang.NullPointerException e) {
 							linha = buffer.readLine();
 						}
-					}	
-					linha = buffer.readLine();
+					}
 				}
 				buffer.close();
 				leitor.close();
@@ -115,10 +116,10 @@ public class RedesController {
 				BufferedReader buffer = new BufferedReader(leitor);
 				String linha = buffer.readLine();
 				while(linha != null) {
-					if (linha.contains("dia")) {
-						String[] Fim = linha.split(",");
-						String[] Media = Fim[2].split("=");
-						System.out.print(comando + ": Media " + Media[1]);
+					if (linha.contains("avg")) {
+						String[] Dividir = linha.split(" = ");
+						String[] Media = Dividir[1].split("/");
+						System.out.print(comando + ": Media = " + Media[1] + "ms");
 						linha = buffer.readLine();
 					}
 					else {
